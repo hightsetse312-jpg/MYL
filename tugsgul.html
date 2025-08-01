@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <title>Song Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 30px;
+      background-color: black;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+    .song-image {
+  width: 100%;
+  height: auto;
+  max-width: 500px;   
+  max-height: 600px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 0 10px #b6c0b6;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+
+    .play-button:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    .lyrics {
+      margin-top: 30px;
+      font-size: 1.2em;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1> Энэ дуугаараа вэбсайтаа төгсгөе дөө. Сэтгэлээ шингээж хийсэн болохоор аль болох гоё болгохыг хичээсэн юм шүү.
+    Анхны харцаар дурладаг гэдгийг мэдрүүлсэн болохоор энэ дуу санаанд минь орсон юм.</h1>
+
+
+  <div class="container">
+    <img src="images/choijoo.jpeg" alt="Song Image" class="song-image">
+  
+    <!-- Зөв play button -->
+    <button class="play-button" id="playBtn" onclick="playSong()">▶</button>
+  
+    <audio id="Duu">
+      <source src="music/Choi Joo - Serenade Aminor Sunrise Festival 2016.mp3" type="audio/mpeg">
+      Таны браузер дуу тоглуулах боломжгүй байна.
+    </audio>
+  </div>
+
+
+  <!-- 🎶 Дууны үг -->
+  <div class="lyrics">
+    "Анхны хайртайгаа би сүүлд учирсан <br>
+Хамгийн сүүлд болохоор энэ <br>
+Үүрд хуучрашгүй <br>
+Чиний тунгалаг тод уруулаас буцаж иршгүй дурласан <br>
+Хаашаа хүрэхээ мэдэхгүй <br>
+Хоног өдөр чамруу урсаж <br>
+Танихгүй мөрүүд дээр гишгэж <br>
+Борооны дуслуудаар амьсгалж <br>
+Бодолдоо аль эрт тасарсан <br>
+Чиний бэлэглэсэн амьдрал <br>
+Анхны хайртайгаа сүүлд учирсан <br>
+Хамгийн сүүлд болохоор <br>
+Хэзээ ч хуучрахгүй <br>
+Надад таалагдаж байна, битгий зогсоорой <br>
+Надад цаг олдохгүй, чи дэргэд минь <br>
+Харах нүдэнд чинь огторгуй <br>
+Хэлэх үгэнд чинь согтмоор байна <br>
+Хаашаа хүрэхээ мэдэхгүй <br>
+Зөвхөн үнэн дунд төөрөлдөнө <br>
+Ганц үнсэлтэнд хөл алдмаар <br>
+Гараас чинь атгаад алдсан <br>
+Гал авсах шиг дүрэлзэнэ <br>
+Анхны хайртайгаа сүүлд учирсан <br>
+Хамгийн сүүлд болохоор хэзээ ч <br>
+Хэзээ ч хуучрахгүй" <br>
+  </div>
+
+<h2></h2>
+
+
+  <script>
+function playSong() {
+  const audio = document.getElementById("Duu");
+  const btn = document.getElementById("playBtn");
+  
+  if (audio.paused) {
+    audio.currentTime = 0; // Эхнээс тоглуулах
+    audio.play();
+    btn.textContent = "⏸";
+  } else {
+    audio.pause();
+    btn.textContent = "▶";
+  }
+}
+
+  </script>
+
+</body>
+</html>
