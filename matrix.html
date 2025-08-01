@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Matrix Birthday</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+    }
+
+    canvas {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    #birthdayMessage {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 2em;
+      color: #dae0da;
+      opacity: 0;
+      z-index: 1;
+      transition: opacity 2s ease;
+      text-shadow: 0 0 20px #cfcfcf;
+      text-align: center;
+
+      
+    }
+
+    #nextButton {
+      position: absolute;
+      top: 75%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      padding: 12px 30px;
+      font-size: 1.2em;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      background-color: #00ff00;
+      color: black;
+      cursor: pointer;
+      z-index: 2;
+      transition: opacity 1.5s ease;
+      box-shadow: 0 0 10px #00ff00;
+    }
+
+    #nextButton:hover {
+      background-color: #00cc00;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+
+  <div id="birthdayMessage">
+    🥳Төрсөн өдрийн мэнд Марлаа🎂<br>
+    Чи бол миний амьдралд учирсан хамгийн гайхалтай хүмүүсийн маань нэг шүү.<br>
+    Би чиний жаргалтай төрхөнд дуртай.<br>
+    Үргэлж инээмсэглэж байгаарай.🥰
+    Чамд бүхнээс илүү аз жаргал, инээд хөөр, хайр баяр баяслыг хүсэe ❤️<br>
+  </div>
+
+  <button id="nextButton" onclick="goToNext()">Next ➤</button>
+
+  <script>
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "01あいうえおカキクケコｱｲｳｴｵABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const fontSize = 15;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array.from({ length: columns }, () => 1);
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#0F0";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+
+        ctx.fillText(text, x, y);
+
+        if (y > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 33);
+
+    // 🎈 6 сек -> мэндчилгээ, 8 сек -> Next товч
+    setTimeout(() => {
+      document.getElementById("birthdayMessage").style.opacity = 1;
+    }, 6000);
+
+    setTimeout(() => {
+      document.getElementById("nextButton").style.opacity = 1;
+    }, 8000);
+
+    function goToNext() {
+      window.location.href = "page1.html"; // Энд дараагийн хуудасны нэр
+    }
+  </script>
+</body>
+</html>
