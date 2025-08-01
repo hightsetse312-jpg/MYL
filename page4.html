@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>viva</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- Ерөнхий ---------- */
+    body{
+      margin:0;
+      padding:0;
+      background:url('images/plan2.jpg') no-repeat center/cover fixed;
+      font-family:'Playfair Display',serif;
+      color:#ffd1dc;
+      text-shadow:1px 1px 3px #000;
+    }
+    .container{
+      max-width:1200px;
+      width:90%;
+      margin:auto;
+      padding:40px 20px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    /* ---------- Текст ---------- */
+    .caption{
+      font-size:22px;
+      margin:20px 0;
+      text-align:center;
+    }
+
+    /* ---------- Зурагны grid ---------- */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+      margin-bottom:30px;
+      width:100%;
+    }
+    .grid img{
+      width:100%;
+      height:auto;
+      border-radius:15px;
+      box-shadow:0 6px 18px rgba(0,0,0,.5);
+      transition:transform .3s ease,filter .3s ease;
+    }
+    .grid img:hover{
+      transform:scale(1.04);
+      filter:brightness(1.1);
+    }
+
+    /* ---------- Button ---------- */
+    .button{
+      padding:12px 28px;
+      font-size:18px;
+      font-weight:bold;
+      border:none;
+      border-radius:10px;
+      background:#ff9dbb;
+      color:#fff;
+      cursor:pointer;
+      box-shadow:0 4px 12px rgba(0,0,0,.3);
+      transition:background .3s ease;
+    }
+    .button:hover{background:#ff74a4}
+  </style>
+</head>
+<body>
+  <div class="container">
+      <!-- эхний зураг -->
+      <div class="grid">
+        <img src="images/tugs.png" alt="Тусгай зураг">
+      </div>
+
+      <div class="caption">
+        when she says she is not special but this is how i see her in the world full of other people 😊
+      </div>
+
+      <!-- хоёр дахь багц -->
+      <div class="grid">
+        <img src="images/done.png"           alt="done">
+        <img src="images/how_i_see_her.png" alt="for you i would">
+      </div>
+
+      <div class="caption">
+        i can do everything for you<br>
+        Your smile is the most beautiful thing to me
+      </div>
+
+      <button class="button" onclick="location.href='page5.html'">Next ➤</button>
+  </div>
+</body>
+</html>

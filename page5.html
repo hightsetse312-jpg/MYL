@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yellow Person</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display:wght@500&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Background image with soft glow */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      filter: brightness(0.85) blur(1px);
+      z-index: -2;
+    }
+
+    body {
+  background: url('images/sun.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 3rem 1.5rem;
+  font-family: 'Quicksand', sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      color: #fff7b2;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+      margin-bottom: 2rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .quote-card {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 2rem 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .quote-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #d08b00;
+      font-weight: 600;
+    }
+
+    .quote-card p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .footer-text {
+      font-size: 1.4rem;
+      color: #f1db5d;
+      text-align: center;
+      margin-top: 1rem;
+      font-style: italic;
+      opacity: 0.95;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      animation: fadeIn 1s ease-in-out;
+      backdrop-filter: blur(4px);
+  padding: 10px 16px;
+  border-radius: 12px;
+  display: inline-block
+    }
+
+    .music-player {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 20px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .music-player:hover {
+      background: rgba(218, 248, 82, 0.9);
+      transform: scale(1.1);
+    }
+
+    .music-player img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .heart-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 20px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .heart-button:hover {
+      background: rgba(255, 220, 80, 0.9);
+      transform: scale(1.1);
+    }
+
+    .heart-button img {
+      width: 48px;
+      height: 48px;
+    }
+
+    .emoji-heart {
+      position: fixed;
+      top: -30px;
+      font-size: 48px;
+      animation: fall 10s linear forwards;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .next-button {
+      margin-top: 20px;
+      background-color: #f4cd45;
+      color: #333;
+      text-decoration: none;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s, transform 0.2s;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .next-button:hover {
+      background-color: #ffe96e;
+      transform: scale(1.05);
+    }
+
+    .footer-buttons {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* Static positioning instead of fixed */
+.heart-button,
+.music-player {
+  position: static;
+  padding: 14px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+
+/* Image sizes */
+.heart-button img {
+  width: 48px;
+  height: 48px;
+}
+.music-player img {
+  width: 28px;
+  height: 28px;
+}
+
+/* Hover effects */
+.heart-button:hover {
+  background: rgba(255, 220, 80, 0.9);
+  transform: scale(1.1);
+}
+.music-player:hover {
+  background: rgba(218, 248, 82, 0.9);
+  transform: scale(1.1);
+}
+
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-30px) translateX(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(50px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Title -->
+  <h1>I wanna be your</h1>
+
+  <!-- Card -->
+  <div class="quote-card">
+    <h2>yellow person:</h2>
+    <p>
+      Someone you can tell everything and they won’t judge you.<br />
+      Someone you can trust with everything.
+    </p>
+  </div>
+
+  <!-- Footer Quote -->
+  <div class="footer-text">
+    🎵 "To be someone's everything, their reason to smile."<br>
+    You are always on my mind, whether we're together or apart. You looks just like a dream. The prettiest girl i've ever seen... </div>
+
+
+
+  <!-- Footer Buttons Wrapper -->
+<div class="footer-buttons">
+  <!-- Heart Button -->
+  <button class="heart-button" onclick="startRain()">
+    <img src="b25ccffe-29df-4f4a-804f-2e3619425f1f.png" alt="1.end olon udaa dar 💛🌻">
+  </button>
+
+  <!-- Music Button -->
+  <div class="music-player" onclick="toggleMusic()">
+    <img id="music-icon" src="play.png" alt="2.Play">
+  </div>
+</div>
+
+
+
+
+
+  <!-- Music -->
+  <audio id="myAudio" src="music/yung kai - blue (Lyrics).mp3"></audio>
+
+  <!-- Next Page -->
+  <a href="special.html" class="next-button">3.Next ➡️</a>
+
+  <!-- Scripts -->
+  <script>
+    const audio = document.getElementById("myAudio");
+    const icon = document.getElementById("music-icon");
+
+    function toggleMusic() {
+      if (audio.paused) {
+        audio.play();
+        icon.src = "pause.png";
+      } else {
+        audio.pause();
+        icon.src = "play.png";
+      }
+    }
+
+    function startRain() {
+      for (let i = 0; i < 60; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('emoji-heart');
+        heart.textContent = '💛';
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+  </script>
+</body>
+</html>

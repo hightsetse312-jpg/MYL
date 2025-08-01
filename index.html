@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <title>For You I Would</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #ff9eb5 url('images/meow.png') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding-top: 80px;
+}
+
+    h1 {
+        font-size: 2.7em;
+  margin-bottom: 10px;
+  color: #fff0f5;
+  text-shadow: 0 2px 10px rgba(255, 192, 203, 0.7);
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #ffe6f0, #ffd6e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 90%;
+      margin: 10px auto 30px;
+      color: #fefefe;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      z-index: 2;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+      font-size: 1em;
+    }
+
+    .links a:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: scale(1.05);
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 8s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: -10px;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.6) rotate(45deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      .links a {
+        font-size: 0.9em;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🍀Marlaad zoriulsan website-д тавтай морил🍀</h1>
+  <p>Энэ бол зөвхөн эхлэл — цаашдаа илүү гоё зүйлсийг хамтдаа бүтээх болно гэж найдаж байна 🫶</p>
+
+  <div class="links">
+    <a href="start.html">🎀 Start</a>
+    <a href="special.html">🍀 Special Page</a>
+    <a href="choijoo.html"> 🎼Choijoo</a>
+    <a href="page1.html">⭐Page 1</a>
+    <a href="page2.html">🎸Page 2</a>
+    <a href="page3.html">😂Page 3</a>
+    <a href="page4.html">🤍Page 4</a>
+    <a href="page5.html">🌻Page 5</a>
+  </div>
+
+  <div class="hearts"></div>
+
+  <script>
+    const heartsContainer = document.querySelector('.hearts');
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+      heart.style.top = Math.random() * 100 + "vh";
+      heartsContainer.appendChild(heart);
+    }
+  </script>
+</body>
+</html>

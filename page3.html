@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sorry it's so cringe...</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: url(images/bi_backround.png) no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      font-family: 'Playfair Display', serif;
+      color: #ffeaea;
+      padding-top: 40px;
+      text-shadow: 1px 1px 2px #00000070;
+    }
+
+    .slider {
+      position: relative;
+      width: 400px;
+      margin-bottom: 20px;
+    }
+
+    .slider img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .slider img.active {
+      display: block;
+    }
+
+    .button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.7);
+      border: none;
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .prev-button {
+      left: 10px;
+    }
+
+    .next-button {
+      right: 10px;
+      color: aliceblue;
+      
+    }
+
+    .caption {
+        font-size: 18px;
+        max-width: 500px;
+        text-align: center;
+        color: #ffeaea;
+        margin-top: 10px;
+        line-height: 1.6;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 12px 20px;
+        border-radius: 15px;
+        backdrop-filter: blur(4px);
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bgMusic" autoplay loop>
+    <source src="music/Mac DeMarco Freaking Out The Neighborhood.mp3" type="audio/mpeg" />
+  </audio>
+
+
+  <h1>Bi urgelj cinii tald</h1>
+
+  <div class="slider">
+    <img src="images/bi1.png" class="active" alt="Зураг 1">
+    <img src="images/bi2.png" alt="Зураг 2">
+    <button class="button prev-button" onclick="prevImage()">⬅️</button>
+    <button class="button next-button" onclick="nextImage()">➡️</button>
+  </div>
+
+  <div class="caption">
+    Maybe it's cringe, but I still meant it all. <br>
+    This is how I feel, even if I can't say it out loud sometimes...<br>
+    <strong>You’re special to me. 💗</strong>
+  </div>
+
+
+  <a href="page4.html" class="next-button">Next ➡️</a>
+
+  <script>
+    let current = 0;
+    const images = document.querySelectorAll('.slider img');
+
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextImage() {
+      current = (current + 1) % images.length;
+      showImage(current);
+    }
+
+    function prevImage() {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    }
+  </script>
+
+</body>
+</html>
