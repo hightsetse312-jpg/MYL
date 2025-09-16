@@ -12,31 +12,31 @@
     }
 
     body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #ff9eb5 url('images/meow.png') no-repeat center center fixed;
-  background-size: cover;
-  height: 100vh;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  padding-top: 80px;
-}
+      font-family: 'Segoe UI', sans-serif;
+      background: #ff9eb5 url('images/meow.png') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding-top: 80px;
+    }
 
     h1 {
-        font-size: 2.7em;
-  margin-bottom: 10px;
-  color: #fff0f5;
-  text-shadow: 0 2px 10px rgba(255, 192, 203, 0.7);
-  font-weight: 800;
-  letter-spacing: 1px;
-  background: linear-gradient(90deg, #ffe6f0, #ffd6e0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+      font-size: 2.7em;
+      margin-bottom: 10px;
+      color: #fff0f5;
+      text-shadow: 0 2px 10px rgba(255, 192, 203, 0.7);
+      font-weight: 800;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, #ffe6f0, #ffd6e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     p {
@@ -45,6 +45,21 @@
       margin: 10px auto 30px;
       color: #fefefe;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .countup-container {
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+      border-radius: 20px;
+      padding: 18px 32px;
+      margin-bottom: 28px;
+      font-size: 1.25em;
+      box-shadow: 0 2px 12px rgba(255, 192, 203, 0.10);
+      display: inline-block;
+      text-shadow: 0 1px 6px rgba(255,192,203,0.25);
+      font-weight: 500;
+      letter-spacing: 1px;
+      z-index: 2;
     }
 
     .links {
@@ -134,12 +149,20 @@
         font-size: 0.9em;
         padding: 8px 16px;
       }
+      .countup-container {
+        font-size: 1em;
+        padding: 10px 8px;
+      }
     }
   </style>
 </head>
 <body>
   <h1>🍀Гэгээнээд зориулсан website-д тавтай морил🍀</h1>
   <p>Happy Girlfriend's Day My Love</p>
+
+  <div class="countup-container" id="countup">
+    Бид хамтдаа: <span id="days">364</span> өдөр <span id="hours">0</span> цаг <span id="minutes">0</span> минут <span id="seconds">0</span> секунд
+  </div>
 
   <div class="links">
     <a href="matrix.html">🌸Start</a>
@@ -153,6 +176,33 @@
   <div class="hearts"></div>
 
   <script>
+    // COUNTUP TIMER
+    // Set your anniversary date here (364 days ago from today: 2025-09-16)
+    const startDate = new Date('2024-09-17T00:00:00'); // Adjust time if needed
+
+    function updateCountup() {
+      const now = new Date();
+      let diff = now - startDate;
+
+      // Calculate days, hours, minutes, seconds
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      diff -= days * (1000 * 60 * 60 * 24);
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      diff -= hours * (1000 * 60 * 60);
+      const minutes = Math.floor(diff / (1000 * 60));
+      diff -= minutes * (1000 * 60);
+      const seconds = Math.floor(diff / 1000);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+
+    updateCountup();
+    setInterval(updateCountup, 1000);
+
+    // HEARTS ANIMATION
     const heartsContainer = document.querySelector('.hearts');
     for (let i = 0; i < 30; i++) {
       const heart = document.createElement('div');
@@ -165,5 +215,3 @@
   </script>
 </body>
 </html>
-
-
